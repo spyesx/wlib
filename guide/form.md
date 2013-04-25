@@ -1,5 +1,5 @@
-wlib.form.element
-=================
+wlib.form.element validation
+============================
 
 ## HTML
 
@@ -111,10 +111,10 @@ element.addRule({name:'nbvalMax', limit:40});
 element.addRule({name:'not_empty'});
 
 // Same as
-element.addRule({name:'same_as', :challenge: $('#your_field_id') });
+element.addRule({name:'same_as', challenge: $('#your_field_id') });
 
 // REGEX
-$element.addRule({name:'regex', regex : /^0[1-9][0-9]{8}$/ });
+element.addRule({name:'regex', regex : /^0[1-9][0-9]{8}$/ });
 
 ```
 
