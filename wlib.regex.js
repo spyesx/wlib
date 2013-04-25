@@ -1,6 +1,6 @@
 var wlib = wlib || {};
 
-(function($)
+(function()
 {
 	function Regex()
 	{
@@ -80,4 +80,4 @@ var wlib = wlib || {};
 
 	wlib.regex = new Regex();
 
-})(jQuery);
+})();

@@ -1,6 +1,6 @@
 var wlib = wlib || {};
 
-(function($)
+(function()
 {
 	function Request()
 	{
@@ -23,4 +23,4 @@ var wlib = wlib || {};
 
 	wlib.request = new Request();
 
-})(jQuery);
+})();
