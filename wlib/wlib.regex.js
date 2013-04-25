@@ -17,7 +17,7 @@ var wlib = wlib || {};
 
 		this.check = function(regex, value)
 		{
-			return _regex.[regex].test(value);
+			return _regex[regex].test(value);
 		};
 
 		this.isNumber = function(value)

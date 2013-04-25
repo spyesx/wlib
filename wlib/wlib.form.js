@@ -6,27 +6,29 @@ wlib.form.element = (function($)
 {
 	function Element(el)
 	{
-		var self = this;
-		self.el = el;
-		self.val = self.el.val();
-		self.errors = [];
-		self.rules = [];
-		self.eventObj = {};
+		this.el = el;
+		this.val = this.el.val();
+		this.errors = [];
+		this.rules = [];
+		this.eventObj = {};
 
 		this.addRule = function(rule)
 		{
-			var self = this;
-			self.rules.push(rule);
-			return self;
+			this.rules.push(rule);
+			return this;
 		};
 
-		this.verify = function()
+		this.validate = function()
 		{
-			self.errors = [];
-			self.val = self.el.val();
+			var self = this;
+
+			this.errors = [];
+
+			this.val = self.el.val();
+			
 			$.each(self.rules, function(index, rule)
 			{
-				$(self.eventObj).trigger('success');
+				$(self.eventObj).trigger('valid');
 
 				switch(rule.name)
 				{
@@ -74,7 +76,8 @@ wlib.form.element = (function($)
 
 			});
 
-			if(self.errors.length > 0){
+			if(self.errors.length > 0)
+			{
 				$(self.eventObj).trigger('error');
 			}
 
@@ -88,16 +91,18 @@ wlib.form.element = (function($)
 
 		this.on = function(key, method)
 		{
-	        if(key == 'success')
+			var self = this;
+
+	        if(key == 'valid')
 	        {
-	            $(self.eventObj).on('success', function(e, data)
+	            $(this.eventObj).on('valid', function(e, data)
 	            {
 	                method.call(self, data);
 	            });
 	        }
 	        else if(key == 'error')
 	        {
-	            $(self.eventObj).on('error', function(e, data)
+	            $(this.eventObj).on('error', function(e, data)
 	            {
 	            	var data = data || {};
 	            	data.errors = self.errors;
@@ -106,12 +111,12 @@ wlib.form.element = (function($)
 	        }
 	        else
 	        {
-	            $(self.eventObj).on('xhr-error', function(e, data)
+	            $(this.eventObj).on('xhr-error', function(e, data)
 	            {
 	                method.call(self, data);
 	            });
 	        }
-	        return self;
+	        return this;
 	    };
 	}
 
