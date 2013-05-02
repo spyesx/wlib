@@ -10,7 +10,7 @@ Array.prototype.remove = function(from, to)
 	return this.push.apply(this, rest);
 };
 
-if(typeof jQuery == 'object' && typeof jQuery.fn.jquery == 'string')
+if(typeof jQuery == 'function' && typeof jQuery.fn.jquery == 'string')
 {
 	$(window).on('resize', function()
 	{
