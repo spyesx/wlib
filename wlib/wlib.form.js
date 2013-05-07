@@ -40,6 +40,10 @@ wlib.form.element = (function($)
 							var is_valid = wlib.regex.check('url', self.val);
 							if(!is_valid){self.errors.push({name:rule.name, message:rule.message});}
 						break;
+					case 'twitterusername' :
+							var is_valid = wlib.regex.check('twitterusername', self.val);
+							if(!is_valid){self.errors.push({name:rule.name, message:rule.message});}
+						break;
 					case 'isNumber' :
 							var is_valid = wlib.regex.isNumber(self.val);
 							if(!is_valid){self.errors.push({name:rule.name, message:rule.message});}
