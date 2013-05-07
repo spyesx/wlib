@@ -7,7 +7,8 @@ var wlib = wlib || {};
 		var _regex = {
 			email : /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/,
 			url : /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/,
-			number : /[0-9]|\./
+			number : /[0-9]|\./,
+			twitterusername : /(^|[^@\w])@(\w{1,15})\b/
 		};
 
 		this.add = function(name, regex)
