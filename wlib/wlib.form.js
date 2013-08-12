@@ -25,7 +25,7 @@ wlib.form.element = (function($)
 			this.errors = [];
 
 			this.val = self.el.val();
-
+			
 			$.each(self.rules, function(index, rule)
 			{
 				self.eventObj.trigger('valid');
