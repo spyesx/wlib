@@ -3,20 +3,12 @@
  */
 window.location.origin = window.location.origin || window.location.protocol+'//'+window.location.host;
 
-
-/*
-  Add remove method to Array object. From an to must be indexes.
- */
 Array.prototype.remove = function(from, to)
 {
 	var rest = this.slice((to || from) + 1 || this.length);
 	this.length = from < 0 ? this.length + from : from;
 	return this.push.apply(this, rest);
 };
-
-/*
-  Add event resizeEnd to window.
- */
 
 if(typeof jQuery == 'function' && typeof jQuery.fn.jquery == 'string')
 {
