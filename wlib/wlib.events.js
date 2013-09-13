@@ -1,3 +1,13 @@
+/*!
+ * Weinto JavaScript Library - wlib
+ * http://www.weinto.com/
+ *
+ *
+ * Copyright 20011, 2013 Weinto, Nicolas Bages
+ * nicolas.bages@weinto.com
+ *
+ */
+
 /*
 	Singleton based on jQuery events
  */
@@ -15,7 +25,7 @@ var wlib = wlib || {};
 			this._e.on.apply(this._e, arguments);
 		};
 
-		this.remove = function()
+		this.ignore = function()
 		{
 			this._e.off.apply(this._e, arguments);
 		};
