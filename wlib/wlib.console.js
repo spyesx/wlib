@@ -12,7 +12,7 @@
     Prevent console issues on old browsers
  */
 
- (function()
+(function()
 {
     var method;
     var noop = function () {};
