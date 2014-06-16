@@ -25,21 +25,21 @@ wlib.console.mode('off'); // Turn off the console
 
 Exactly like the console provided by your browser:
 
-* log : wlib.console.log()
-* debug : wlib.console.debug()
-* info : wlib.console.info()
-* warn : wlib.console.warn()
-* error : wlib.console.error()
-* trace : wlib.console.trace()
-* group : wlib.console.group()
-* groupEnd : wlib.console.groupEnd()
-* dir : wlib.console.dir()
-* dirxml : wlib.console.dirxml()
+* __log__ : wlib.console.log()
+* __debug__ : wlib.console.debug()
+* __info__ : wlib.console.info()
+* __warn__ : wlib.console.warn()
+* __error__ : wlib.console.error()
+* __trace__ : wlib.console.trace()
+* __group__ : wlib.console.group()
+* __groupEnd__ : wlib.console.groupEnd()
+* __dir__ : wlib.console.dir()
+* __dirxml __: wlib.console.dirxml()
 
 A little plus
 
-* log : wlib.console.mode('on')
-* log : wlib.console.mode('off')
+* __mode__ : wlib.console.mode('on')
+* __mode__ : wlib.console.mode('off')
 
 ### Examples
 
