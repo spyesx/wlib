@@ -60,7 +60,7 @@ var wlib = wlib || {};
 
         this.isAvailable   = function(){ _isAvailable() };
 
-        this.status      = function(action)
+        this.mode      = function(action)
         {
             if(action == 'on'){ _isOn = true; }
             if(action == 'off'){ _isOn = false; }
