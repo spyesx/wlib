@@ -34,7 +34,7 @@ Exactly like the console provided by your browser:
 * __group__ : wlib.console.group()
 * __groupEnd__ : wlib.console.groupEnd()
 * __dir__ : wlib.console.dir()
-* __dirxml __: wlib.console.dirxml()
+* __dirxml__ : wlib.console.dirxml()
 
 A little plus
 
