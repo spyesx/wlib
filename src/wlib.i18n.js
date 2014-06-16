@@ -21,10 +21,9 @@ var wlib = wlib || {};
 
 	i18n.prototype.exists = function(lang)
 	{
-		var exists = this.allowed.some(function(el, index, array){
+		return this.allowed.some(function(el, index, array){
 			return el == lang;
 		});
-		return exists;
 	};
 
 	i18n.prototype.setCurrent = function(lang)
@@ -35,7 +34,7 @@ var wlib = wlib || {};
 
 	i18n.prototype.setLang = function(lang)
 	{
-		if(lang == '')
+		if(lang == '' || lang == null)
 		{
 			var lang = wlib.cookies.get('lang');
 			if(! lang)
@@ -51,8 +50,25 @@ var wlib = wlib || {};
 		}
 
 		this.setCurrent(lang);
-		wlib.console.log('Language used:', lang);
-	}
+		wlib.console.info('Language used:', lang);
+	};
+
+	i18n.prototype.userLang = function()
+	{
+		var lang = wlib.cookies.get('lang');
+		if(lang){
+			return lang;
+		}
+
+		lang = this.navigator();
+
+		if( ! this.exists(lang))
+		{
+			lang = this.default;
+		}
+
+		return lang;
+	};
 
 
 	wlib.i18n = i18n;

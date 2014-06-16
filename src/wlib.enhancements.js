@@ -13,12 +13,7 @@
  */
 window.location.origin = window.location.origin || window.location.protocol+'//'+window.location.host;
 
-Array.prototype.remove = function(from, to)
-{
-	var rest = this.slice((to || from) + 1 || this.length);
-	this.length = from < 0 ? this.length + from : from;
-	return this.push.apply(this, rest);
-};
+
 
 if (!Array.prototype.some)
 {
@@ -44,6 +39,8 @@ if (!Array.prototype.some)
     return false;
   };
 }
+
+
 
 if(typeof jQuery == 'function' && typeof jQuery.fn.jquery == 'string')
 {
@@ -236,3 +233,34 @@ window.clearRequestTimeout = function(handle) {
     window.msCancelRequestAnimationFrame ? window.msCancelRequestAnimationFrame(handle.value) :
     clearTimeout(handle);
 };
+
+
+if (!Array.prototype.find) {
+  Object.defineProperty(Array.prototype, 'find', {
+    enumerable: false,
+    configurable: true,
+    writable: true,
+    value: function(predicate) {
+      if (this == null) {
+        throw new TypeError('Array.prototype.find called on null or undefined');
+      }
+      if (typeof predicate !== 'function') {
+        throw new TypeError('predicate must be a function');
+      }
+      var list = Object(this);
+      var length = list.length >>> 0;
+      var thisArg = arguments[1];
+      var value;
+
+      for (var i = 0; i < length; i++) {
+        if (i in list) {
+          value = list[i];
+          if (predicate.call(thisArg, value, i, list)) {
+            return value;
+          }
+        }
+      }
+      return undefined;
+    }
+  });
+}
