@@ -18,7 +18,7 @@ wlib.xmljson.xml2json = function(xml)
 	// Create the return object
 	var obj = {};
 
-	if (xml.nodeType == 1)  // element
+	if (xml.nodeType === 1)  // element
 	{
 		// do attributes
 		if (xml.attributes.length > 0)
@@ -31,7 +31,7 @@ wlib.xmljson.xml2json = function(xml)
 			}
 		}
 	}
-	else if(xml.nodeType == 3) // text
+	else if(xml.nodeType === 3) // text
 	{
 		obj = xml.nodeValue;
 	}
@@ -43,13 +43,13 @@ wlib.xmljson.xml2json = function(xml)
 		{
 			var item     = xml.childNodes.item(i);
 			var nodeName = item.nodeName;
-			if (typeof(obj[nodeName]) == "undefined")
+			if (typeof(obj[nodeName]) === "undefined")
 			{
 				obj[nodeName] = xmlToJson(item);
 			}
 			else
 			{
-				if (typeof(obj[nodeName].push) == "undefined")
+				if (typeof(obj[nodeName].push) === "undefined")
 				{
 					var old       = obj[nodeName];
 					obj[nodeName] = [];

@@ -22,7 +22,7 @@ var wlib = wlib || {};
 	i18n.prototype.exists = function(lang)
 	{
 		return this.allowed.some(function(el, index, array){
-			return el == lang;
+			return el === lang;
 		});
 	};
 
@@ -34,12 +34,12 @@ var wlib = wlib || {};
 
 	i18n.prototype.setLang = function(lang)
 	{
-		if(lang == '' || lang == null)
+		if(lang === '' || lang === null)
 		{
-			var lang = wlib.cookies.get('lang');
+			lang = wlib.cookies.get('lang');
 			if(! lang)
 			{
-				var lang = this.navigator();
+				lang = this.navigator();
 			}
 		}
 

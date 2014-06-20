@@ -39,51 +39,51 @@ wlib.form.element = (function($)
 			$.each(self.rules, function(index, rule)
 			{
 				self.eventObj.trigger('valid');
-
+				var is_valid = false;
 				switch(rule.name)
 				{
 					case 'email' :
-							var is_valid = wlib.regex.check('email', self.val);
+							is_valid = wlib.regex.check('email', self.val);
 							if(!is_valid){self.errors.push({name:rule.name, message:rule.message});}
 						break;
 					case 'url' :
-							var is_valid = wlib.regex.check('url', self.val);
+							is_valid = wlib.regex.check('url', self.val);
 							if(!is_valid){self.errors.push({name:rule.name, message:rule.message});}
 						break;
 					case 'twitterusername' :
-							var is_valid = wlib.regex.check('twitterusername', self.val);
+							is_valid = wlib.regex.check('twitterusername', self.val);
 							if(!is_valid){self.errors.push({name:rule.name, message:rule.message});}
 						break;
 					case 'isNumber' :
-							var is_valid = wlib.regex.isNumber(self.val);
+							is_valid = wlib.regex.isNumber(self.val);
 							if(!is_valid){self.errors.push({name:rule.name, message:rule.message});}
 						break;
 					case 'strlenMin' :
-							var is_valid = wlib.regex.strlenMin(self.val, rule.limit);
+							is_valid = wlib.regex.strlenMin(self.val, rule.limit);
 							if(!is_valid){self.errors.push({name:rule.name, message:rule.message});}
 						break;
 					case 'strlenMax' :
-							var is_valid = wlib.regex.strlenMax(self.val, rule.limit);
+							is_valid = wlib.regex.strlenMax(self.val, rule.limit);
 							if(!is_valid){self.errors.push({name:rule.name, message:rule.message});}
 						break;
 					case 'nbvalMin' :
-							var is_valid = wlib.regex.nbvalMin(self.val, rule.limit);
+							is_valid = wlib.regex.nbvalMin(self.val, rule.limit);
 							if(!is_valid){self.errors.push({name:rule.name, message:rule.message});}
 						break;
 					case 'nbvalMax' :
-							var is_valid = wlib.regex.nbvalMax(self.val, rule.limit);
+							is_valid = wlib.regex.nbvalMax(self.val, rule.limit);
 							if(!is_valid){self.errors.push({name:rule.name, message:rule.message});}
 						break;
 					case 'not_empty' :
-							var is_valid = wlib.regex.not_empty(self.val);
+							is_valid = wlib.regex.not_empty(self.val);
 							if(is_valid){self.errors.push({name:rule.name, message:rule.message});}
 						break;
 					case 'same_as' :
-							var is_valid = wlib.regex.same_as(self.val, rule.challenge.val());
+							is_valid = wlib.regex.same_as(self.val, rule.challenge.val());
 							if(!is_valid){self.errors.push({name:rule.name, message:rule.message});}
 						break;
 					case 'regex' :
-							var is_valid = wlib.regex.regex(self.val, rule.regex);
+							is_valid = wlib.regex.regex(self.val, rule.regex);
 							if(!is_valid){self.errors.push({name:rule.name, message:rule.message});}
 						break;
 				}
@@ -107,18 +107,18 @@ wlib.form.element = (function($)
 		{
 			var self = this;
 
-	        if(key == 'valid')
+	        if(key === 'valid')
 	        {
 	            this.eventObj.on('valid', function(e, data)
 	            {
 	                method.call(self, data);
 	            });
 	        }
-	        else if(key == 'error')
+	        else if(key === 'error')
 	        {
 	            this.eventObj.on('error', function(e, data)
 	            {
-	            	var data = data || {};
+	            	data = data || {};
 	            	data.errors = self.errors;
 	                method.call(self, data);
 	            });

@@ -84,7 +84,7 @@ var wlib = wlib || {};
 
 		this.same_as = function(str, challenge)
 		{
-			return (str == challenge ? true : false);
+			return (str === challenge ? true : false);
 		};
 
 	}

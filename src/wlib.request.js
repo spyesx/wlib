@@ -21,7 +21,6 @@ var wlib = wlib || {};
 	        vars.push(hash[0]);
 	        vars[hash[0]] = hash[1];
 	    }
-	    return vars;
 
 	    this.get_param = function(key)
 	    {

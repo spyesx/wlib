@@ -51,19 +51,19 @@ var wlib = wlib || {};
 
         var _isAvailable = function()
         {
-            _isOn = (typeof console == 'object' && typeof console.log == 'function') ? true : false;
+            _isOn = (typeof console === 'object' && typeof console.log === 'function') ? true : false;
 
             this.console.log('wlib.console enabled: '+_isOn);
 
-            return _isOn
-        }
+            return _isOn;
+        };
 
-        this.isAvailable   = function(){ _isAvailable() };
+        this.isAvailable   = function(){ _isAvailable(); };
 
-        this.mode      = function(action)
+        this.mode = function(action)
         {
-            if(action == 'on'){ _isOn = true; }
-            if(action == 'off'){ _isOn = false; }
+            if(action === 'on'){ _isOn = true; }
+            if(action === 'off'){ _isOn = false; }
         };
 
         this.log         = function(){  if(_isOn){ console.log(arguments);}};
@@ -74,7 +74,7 @@ var wlib = wlib || {};
         this.trace       = function(){  if(_isOn){ console.trace();}};
         this.group       = function(){  if(_isOn){ console.group(arguments);}};
         this.groupEnd    = function(){  if(_isOn){ console.groupEnd();}};
-        this.dir         = function(){  if(_isOn){ console.dir(arguments);}},
+        this.dir         = function(){  if(_isOn){ console.dir(arguments);}};
         this.dirxml      = function(){  if(_isOn){ console.dirxml(arguments);}};
     }
 
