@@ -33,7 +33,7 @@ module.exports = function(grunt)
 					jQuery: true
 				},
 			},
-			uses_defaults: ['src/*.js', 'dist/wlib.min.js'],
+			uses_defaults: ['src/*.js'],
 		},
 
 
@@ -56,7 +56,7 @@ module.exports = function(grunt)
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	//grunt.loadNpmTasks('grunt-autoprefixer');
 
-	grunt.registerTask('jshint', ['jshint']);
+	grunt.registerTask('verify', ['jshint']);
 	grunt.registerTask('dist', ['clean:dist','concat:dist', 'uglify:dist']);
 
 };
