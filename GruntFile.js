@@ -41,6 +41,10 @@ module.exports = function(grunt)
 			app_sass: {
 				files: ['scss/**/*.scss', 'scss/**/*.sass'],
 				tasks: ['clean:app_css','compass:app_sass', 'autoprefixer:app_css'],
+			},
+			jshint: {
+				files: ['src/*.js'],
+				tasks: ['jshint'],
 			}
 		}
 
