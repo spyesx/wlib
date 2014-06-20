@@ -25,13 +25,13 @@ wlib.viewport = (function()
 		{
 			var t = this;
 			this.sizes = [];
-			this.original = null;
+			this.current = null;
 		};
 
 		Viewport_Breakpoint.prototype.set = function(name, mediaquery)
 		{
 			this.sizes.push({name:name, mq:mediaquery});
-			this.original = this.identify();
+			this.current = this.identify();
 			return this;
 		};
 
@@ -60,6 +60,12 @@ wlib.viewport = (function()
 
 			if(typeof element !== 'undefined')
 			{
+				if(this.current !== element.name)
+				{
+					this.current = element.name;
+					wlib.events.trigger('wlib/viewport/breakpoint/change', { 'breakpointName' : element.name });
+				}
+
 				return element.name;
 			}
 
