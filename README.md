@@ -16,6 +16,6 @@ I'll work hard on the documentation as soon as possible. Feel free to read the c
 ## Changelog
 
 [2014.06.20]
-* Add grunt task
+* Add grunt tasks
 * JSHINT valid
 * Add minified version

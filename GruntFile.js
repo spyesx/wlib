@@ -19,7 +19,7 @@ module.exports = function(grunt)
 		uglify: {
 			dist: {
 				files: {
-					'dist/wlib.min.js': ['dist/wlib.min.js']
+					'dist/wlib.min.js': ['src/*.js']
 				}
 			}
 		},
@@ -56,6 +56,7 @@ module.exports = function(grunt)
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	//grunt.loadNpmTasks('grunt-autoprefixer');
 
-	grunt.registerTask('dist', ['clean:dist','concat:dist', 'jshint']);
+	grunt.registerTask('jshint', ['jshint']);
+	grunt.registerTask('dist', ['clean:dist','concat:dist', 'uglify:dist']);
 
 };
