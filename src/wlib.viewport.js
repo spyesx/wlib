@@ -3,7 +3,9 @@ wlib.viewport = (function()
 {
 	var Viewport = function()
 	{
-		if(! wlib.console ){console.error('wlib.console is required to use Viewport class.');}
+		if(! wlib.console ){console.error('wlib.console is required to use Responsive_Img class.');}
+		if(! wlib.events ){console.error('wlib.events is required to use Responsive_Img class.');}
+		if(! wlib.viewport ){console.error('wlib.viewport is required to use Responsive_Img class.');}
 	};
 
 	Viewport.prototype.disableScroll = function()
@@ -25,13 +27,13 @@ wlib.viewport = (function()
 		{
 			var t = this;
 			this.sizes = [];
-			this.current = null;
+			this.current = '';
 		};
 
 		Viewport_Breakpoint.prototype.set = function(name, mediaquery)
 		{
 			this.sizes.push({name:name, mq:mediaquery});
-			this.current = this.identify();
+			//this.current = this.identify();
 			return this;
 		};
 

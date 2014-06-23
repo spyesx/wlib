@@ -8,60 +8,45 @@ var wlib = wlib || {};
 
 	wlib.responsive.img = (function()
 	{
-
-		var inspect_src = function()
-		{
-			var dataAttr = 'data-responsiveimg-';
-			var elements = document.querySelectorAll('['+dataAttr+'*]');
-			var elementsLength = elements.length;
-
-			var emptySrc = [];
-
-			for(var i=0; i<elementsLength; i++)
-			{
-				wlib.console.group('wlib.responsive.img : src');
-				if(elements[i].getAttribute('src') === '')
-				{
-					wlib.console.warn(elements[i]);
-				}
-				wlib.console.groupEnd('wlib.responsive.img : src');
-			}
-
-			var emptySrcLength = emptySrc.length;
-
-			if( emptySrcLength > 0)
-			{
-				for(var j=0; j<emptySrcLength; j++)
-				{
-					wlib.console.log('wlib.responsive.img : src are empty for these elements');
-					wlib.console.group('wlib.responsive.img : src');
-					wlib.console.warn(emptySrc[j]);
-					wlib.console.groupEnd('wlib.responsive.img : src');
-				}
-			}
-		};
-
 		var populate_src = function(breakpointName)
 		{
 			var dataAttr = 'data-responsiveimg-'+breakpointName;
+			var dataAttrFragments = dataAttr.replace('data-', '').split('-');
+
+			for(var i=1; i<dataAttrFragments.length; i++)
+			{
+				dataAttrFragments[i] = dataAttrFragments[i][0].toUpperCase() + dataAttrFragments[i].slice(1);
+			}
+
+			var dataAttrDOM = dataAttrFragments.join().replace(/,/g, '');
+
 			var elements = document.querySelectorAll('['+dataAttr+']');
 			var elementsLength = elements.length;
 
-			for(var i=0; i<elementsLength; i++)
+			for(i=0; i<elementsLength; i++)
 			{
-				elements[i].setAttribute('src', imgs[i].dataset[dataAttr]);
+				elements[i].setAttribute('src', elements[i].dataset[dataAttrDOM]);
 			}
 		};
 
 		var populate_style = function(breakpointName)
 		{
-			var dataAttr = 'data-responsiveimg-background-'+breakpointName;
+			var dataAttr = 'data-responsiveimg-'+breakpointName;
+			var dataAttrFragments = dataAttr.replace('data-', '').split('-');
+
+			for(var i=1; i<dataAttrFragments.length; i++)
+			{
+				dataAttrFragments[i] = dataAttrFragments[i][0].toUpperCase() + dataAttrFragments[i].slice(1);
+			}
+
+			var dataAttrDOM = dataAttrFragments.join().replace(/,/g, '');
+
 			var elements = document.querySelectorAll('['+dataAttr+']');
 			var elementsLength = elements.length;
 
-			for(var i=0; i<elementsLength; i++)
+			for(i=0; i<elementsLength; i++)
 			{
-				elements[i].style.backgroundImage = imgs[i].dataset[dataAttr];
+				elements[i].style.backgroundImage = elements[i].dataset[dataAttr];
 			}
 		};
 
@@ -79,9 +64,7 @@ var wlib = wlib || {};
 		{
 			var that = this;
 
-			inspect_src();
-
-			wlib.events.on('wlib/viewport/breakpoint/change', function(datas)
+			wlib.events.listen('wlib/viewport/breakpoint/change', function(e, datas)
 			{
 				that.refresh( datas.breakpointName);
 			});
@@ -89,7 +72,7 @@ var wlib = wlib || {};
 
 		Responsive_Img.prototype.refresh = function(breakpointName)
 		{
-			breakpointName = breakpointName + (window.devicePixelRatio > 1 ? '-x2' : '');
+			breakpointName = breakpointName.replace('-', '') + (window.devicePixelRatio > 1 ? '-x2' : '');
 			populate_src(breakpointName);
 			populate_style(breakpointName);
 		};
